@@ -1,4 +1,4 @@
-// gcc shellcode_runner.c -z execstack -o shellcode_runner
+// gcc shellcode_runner.c -z execstack -o shellcode_runner -g
 #include <stdio.h>
 
 int main() {
