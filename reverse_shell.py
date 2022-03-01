@@ -9,7 +9,6 @@ RUN = True
 # RUN = False
 # DEBUG = True
 DEBUG = False
-DEBUG &= RUN
 
 context.clear(
     arch='amd64',
@@ -18,12 +17,12 @@ context.clear(
 
 if RUN:
     p = process(['./shellcode_runner'])
-if DEBUG:
-    gdb.attach(p, gdbscript="""
-        b *main+69
-        c
-        s
-    """)
+    if DEBUG:
+        gdb.attach(p, gdbscript="""
+            b *main+69
+            c
+            s
+        """)
 
 # hs//nib/ 0x68732f2f6e69622f
 # 127.0.0.1,8080,2 0x0100007f901f0002
